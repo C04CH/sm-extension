@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-   class PlayableSource {
+
+	var gitBase = "https://raw.githubusercontent.com/C04CH/sm-extension/"
+	var gitVersion = "ef7b0a18138c5112448263d97cdb09be3317736e/"
+	var gitPath = "sources/audio/"
+
+    class PlayableSource {
        constructor(id, label, source){
            this.id = id;
            this.label = label;
@@ -51,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var headline = '<h4 class="title">[%TITLE%]</h4>';
 	var container = '<div id="[%ID%]" class="container"></div>';
 
-    var playerTpl = '<div class="playable"><span class="label">[%LABEL%]:</span> <audio id="[%ID%]" src="sources/audio/[%SOURCE%]" type="audio/mp3" controls></audio></div>';
+    var playerTpl = '<div class="playable"><span class="label">[%LABEL%]:</span> <audio id="[%ID%]" src="[%SOURCE%]" type="audio/mp3" controls></audio></div>';
 
     for (var c = 0; sourcesList.length > c; c++){
 		var tempHeadline = headline;
@@ -66,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	        var tempTpl = playerTpl;
 	        tempTpl = tempTpl.replace(/\[%ID%\]/gim, sourcesList[c].list[d].id);
 	        tempTpl = tempTpl.replace(/\[%LABEL%\]/gim, sourcesList[c].list[d].label);
-	        tempTpl = tempTpl.replace(/\[%SOURCE%\]/gim, sourcesList[c].list[d].source);
+	        tempTpl = tempTpl.replace(/\[%SOURCE%\]/gim, gitBase + gitVersion + gitPath + sourcesList[c].list[d].source);
 			var tempContainerDiv = document.getElementById(sourcesList[c].title + "Container");
 	        tempContainerDiv.innerHTML = tempContainerDiv.innerHTML + tempTpl;
 		}
