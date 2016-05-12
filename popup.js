@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 	var gitBase = "https://raw.githubusercontent.com/C04CH/sm-extension/"
-	var gitVersion = "ef7b0a18138c5112448263d97cdb09be3317736e/"
+	var gitVersion = "ea467315a23f161961574506aea409fb30619e2f/"
 	var gitPath = "sources/audio/"
 
     class PlayableSource {
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	sources.push(new PlayableSource("soundofsilence", "Sound of Slience", "soundofsilence.mp3"));
 	sources.push(new PlayableSource("rocky", "Rocky theme", "rocky.mp3"));
 	sources.push(new PlayableSource("dancingqueen", "Dancing queen", "dancingqueen.mp3"));
+	sources.push(new PlayableSource("jurassicpark", "Jurassic Park", "jurassicpark.mp3"));
 
 	var sourcesList = new Array();
 	sourcesList.push(new PlayableSourceList("ShittyFlute", sources));
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var headline = '<h4 class="title">[%TITLE%]</h4>';
 	var container = '<div id="[%ID%]" class="container"></div>';
 
-    var playerTpl = '<div class="playable"><span class="label">[%LABEL%]:</span> <audio id="[%ID%]" src="[%SOURCE%]" type="audio/mp3" controls></audio></div>';
+    var playerTpl = '<div class="playable" id="[%ID%]Div"><span class="label">[%LABEL%]:</span> <audio id="[%ID%]Audio" src="[%SOURCE%]" type="audio/mp3" controls></audio></div>';
 
     for (var c = 0; sourcesList.length > c; c++){
 		var tempHeadline = headline;
@@ -76,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	        tempContainerDiv.innerHTML = tempContainerDiv.innerHTML + tempTpl;
 		}
 
-		main.innerHTML = main.innerHTML + "<hr>";
+		if (c != sourcesList.length -1){
+			main.innerHTML = main.innerHTML + "<hr>";
+		}
     }
 });
