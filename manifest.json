@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
 
-	"name": "ShittyFlute FOX Intro",
+	"name": "SM - Sound buttons",
 	"description": "Para cuando Sierra-DeAtras empieza a molestar con alguna de sus multiples formas de hacerlo",
-	"version": "1.0",
+	"version": "1.1",
 	"browser_action": {
 		"default_icon": "sources/images/icon.png",
 		"default_title": "Tocame",
